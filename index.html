@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://libs.zappar.com/zappar-aframe/2.0.0/zappar-aframe.js"></script>
+
+    <meta charset="utf-8" />
+    <title>A-Frame Business Card Example</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+
+    <script>
+        // Only show our content when the image becomes visible
+        AFRAME.registerComponent("visibility-changer", {
+            init: function () {
+                this.el.setAttribute("visible", false)
+                this.el.sceneEl.addEventListener('zappar-visible', () => this.el.setAttribute("visible", true));
+            }
+        });
+    </script>
+</head>
+<body>
+
+    <!-- START OUR A-FRAME SCENE -->
+    <a-scene loading-screen="backgroundColor: #344A60">
+         <!-- Ask user for camera permissions, display some text if permission is denied -->
+         <a-entity zappar-permissions-ui id="permissions"></a-entity>
+         <!-- shows a full-page dialog that informs the user they're using an unsupported browser -->
+         <a-entity zappar-compatibility-ui id="compatibility"></a-entity>
+
+        <!-- PRE-LOAD OUR ASSETS FOR PERFORMANCE -->
+        <a-assets>
+            <a-asset-item id="brick-large-abyss" src="assets/brick-large-abyss.glb"></a-asset-item>
+            <a-asset-item id="brick-large-dark" src="assets/brick-large-dark.glb"></a-asset-item>
+            <a-asset-item id="brick-large-red" src="assets/brick-large-red.glb"></a-asset-item>
+            <a-asset-item id="brick-large-solarized-dark" src="assets/brick-large-solarized-dark.glb"></a-asset-item>
+            <a-asset-item id="brick-large-night-blue" src="assets/brick-large-night-blue.glb"></a-asset-item>
+            <a-asset-item id="brick-large-kimbie-dark" src="assets/brick-large-kimbie-dark.glb"></a-asset-item>
+            <img id="Brick1LastLine" src="assets/Bricks/Brick1LastLine.png">
+            <img id="Brick2LastLine" src="assets/Bricks/Brick2LastLine.png">
+            <img id="Brick3LastLine" src="assets/Bricks/Brick3LastLine.png">
+            <img id="Brick4LastLine" src="assets/Bricks/Brick4LastLine.png">
+            <img id="Brick5LastLine" src="assets/Bricks/Brick5LastLine.png">
+            <img id="Brick1FourLine" src="assets/Bricks/Brick1FourLine.png">
+            <img id="Brick2FourLine" src="assets/Bricks/Brick2FourLine.png">
+            <img id="Brick3FourLine" src="assets/Bricks/Brick3FourLine.png">
+            <img id="Brick4FourLine" src="assets/Bricks/Brick4FourLine.png">
+            <img id="Brick5FourLine" src="assets/Bricks/Brick5FourLine.png">
+            <img id="Brick1ThreeLine" src="assets/Bricks/Brick1ThreeLine.png">
+            <img id="Brick2ThreeLine" src="assets/Bricks/Brick2ThreeLine.png">
+            <img id="Brick3ThreeLine" src="assets/Bricks/Brick3ThreeLine.png">
+            <img id="Brick4ThreeLine" src="assets/Bricks/Brick4ThreeLine.png">
+            <img id="Brick5ThreeLine" src="assets/Bricks/Brick5ThreeLine.png">
+            <img id="Brick1TwoLine" src="assets/Bricks/Brick1TwoLine.png">
+            <img id="Brick2TwoLine" src="assets/Bricks/Brick2TwoLine.png">
+            <img id="Brick3TwoLine" src="assets/Bricks/Brick3TwoLine.png">
+            <img id="Brick4TwoLine" src="assets/Bricks/Brick4TwoLine.png">
+            <img id="Brick5TwoLine" src="assets/Bricks/Brick5TwoLine.png">
+            <img id="Brick1OneLine" src="assets/Bricks/Brick1OneLine.png">
+            <img id="Brick2OneLine" src="assets/Bricks/Brick2OneLine.png">
+            <img id="Brick3OneLine" src="assets/Bricks/Brick3OneLine.png">
+            <img id="Brick4OneLine" src="assets/Bricks/Brick4OneLine.png">
+            <img id="Brick5OneLine" src="assets/Bricks/Brick5OneLine.png">
+        </a-assets>
+        <!-- END ASSET PRE-LOADING -->
+
+        <!-- CREATE A-FRAME CAMERA AND REPLACE IT WITH ZAPPAR'S CAMERA -->
+        <!-- ALLOW USER TO CLICK ON ELEMENTS BY ADDING CURSOR COMPONENT & IDENTIFY RAYCASTER OBJECTS FOR BETTER PERFORMANCE -->
+        <a-camera zappar-camera cursor="rayOrigin: mouse; fuse: false;" raycaster="objects: .collidable"></a-camera>
+
+        <!-- SET UP OUR EXPERIENCE AS IMAGE TRACKING & GIVE IT AN IMAGE TO TRACK -->
+        <a-entity zappar-image="target: assets/BusinessCard.zpt">
+            <!-- Have a group that will only become visible when the target image comes into view-->
+            <a-entity visibility-changer>
+                <!-- class="collidable" -->
+                <a-entity rotation="0 0 0">
+                    <!-- DERNIERE LIGNE DE BRIQUE -->
+                    <a-entity id="Brick1LastLine" gltf-model="#brick-large-abyss" position="-2.00366 0.13 -0.002" rotation="-90 0 0">
+                        <a-image src="#Brick1LastLine" material="" geometry="height: 0.25; width: 0.9" rotation="90 0 0" position="0.05303 -0.30 -0.00056"></a-image>                
+                    </a-entity>
+                    <a-entity id="Brick2LastLine" gltf-model="#brick-large-kimbie-dark" position="-1.00126 0.13 0" rotation="-90 0 0">
+                        <a-image src="#Brick2LastLine" material="" geometry="height: 0.25" rotation="90 0 0" position="0.00022 -0.30 -0.00619"></a-image>                
+                    </a-entity>
+                    <a-entity id="Brick3LastLine" gltf-model="#brick-large-solarized-dark" position="-0.00135 0.13 0" rotation="-90 0 0">
+                        <a-image src="#Brick3LastLine" material="" geometry="height: 0.25" rotation="90 0 0" position="0.00084 -0.30 -0.00233"></a-image>                
+                    </a-entity>
+                    <a-entity id="Brick4LastLine" gltf-model="#brick-large-night-blue" position="0.99885 0.13 0" rotation="-90 0 0">
+                        <a-image src="#Brick4LastLine" material="" geometry="height: 0.25" rotation="90 0 0" position="0.00116 -0.30 0.00121"></a-image>                
+                    </a-entity>
+                    <a-entity id="Brick5LastLine" gltf-model="#brick-large-red" position="1.99584 0.13 0" rotation="-90 0 0">
+                        <a-image src="#Brick5LastLine" material="" geometry="height: 0.25" rotation="90 0 0" position="-0.0016 -0.30 0.00134"></a-image>
+                    </a-entity>
+    
+                    <!-- AVANT DERNIERE LIGNE DE BRIQUE -->
+                    <a-entity id="Brick1FourLine" gltf-model="#brick-large-kimbie-dark" position="-1.99907 0.40381 -0.002" rotation="-90 0 0">
+                        <a-image src="#Brick1FourLine" material="" geometry="height: 0.24; width: 0.9" rotation="90 0 0" position="0.04503 -0.30 -0.01985"></a-image>
+                    </a-entity>
+                    <a-entity id="Brick2FourLine" gltf-model="#brick-large-solarized-dark" position="-1.00321 0.404 -0.002" rotation="-90 0 0">
+                        <a-image src="#Brick2FourLine" material="" geometry="height: 0.25" rotation="90 0 0" position="-0.00013 -0.30 -0.00852"></a-image>
+                    </a-entity>
+                    <a-entity id="Brick3FourLine" gltf-model="#brick-large-night-blue" position="-0.00426 0.404 -0.002" rotation="-90 0 0">
+                        <a-image src="#Brick3FourLine" material="" geometry="height: 0.25" rotation="90 0 0" position="0.00074 -0.30 -0.00674"></a-image>
+                    </a-entity>
+                    <a-entity id="Brick4FourLine" gltf-model="#brick-large-red" position="0.99652 0.404 -0.002" rotation="-90 0 0">
+                        <a-image src="#Brick4FourLine" material="" geometry="height: 0.25" rotation="90 0 0" position="-0.0019 -0.30 -0.00476"></a-image>
+                    </a-entity>
+                    <a-entity id="Brick5FourLine" gltf-model="#brick-large-dark" position="1.99268 0.404 -0.002" rotation="-90 0 0">
+                        <a-image src="#Brick5FourLine" material="" geometry="height: 0.2; width: 0.8" rotation="90 0 0" position="-0.09474 -0.30 -0.02207"></a-image>
+                    </a-entity>
+    
+                    <!-- TROISIEME LIGNE DE BRIQUE -->
+                    <a-entity id="Brick1ThreeLine" gltf-model="#brick-large-solarized-dark" position="-1.99975 0.67107 -0.002" rotation="-90 0 0">
+                        <a-image src="#Brick1ThreeLine" material="" geometry="height: 0.25; width: 0.8" rotation="90 0 0" position="0.07974 -0.30 0.00412"></a-image>
+                    </a-entity>
+                    <a-entity id="Brick2ThreeLine" gltf-model="#brick-large-red" position="-1.00454 0.67100 -0.002" rotation="-90 0 0">
+                        <a-image src="#Brick2ThreeLine" material="" geometry="height: 0.25" rotation="90 0 0" position="-0.0072 -0.30 -0.00387"></a-image>                
+                    </a-entity> 
+                    <a-entity id="Brick3ThreeLine" gltf-model="#brick-large-kimbie-dark" position="-0.00711 0.67100 -0.002" rotation="-90 0 0">
+                        <a-image src="#Brick3ThreeLine" material="" geometry="height: 0.25" rotation="90 0 0" position="-0.00263 -0.30 -0.00698"></a-image>                
+                    </a-entity>
+                    <a-entity id="Brick4ThreeLine" gltf-model="#brick-large-night-blue" position="0.99258 0.67100 -0.002" rotation="-90 0 0">
+                        <a-image src="#Brick4ThreeLine" material="" geometry="height: 0.25" rotation="90 0 0" position="0.00344 -0.30 -0.00408"></a-image>                
+                    </a-entity>
+                    <a-entity id="Brick5ThreeLine" gltf-model="#brick-large-abyss" position="1.9879 0.67100 -0.002" rotation="-90 0 0">
+                        <a-image src="#Brick5ThreeLine" material="" geometry="height: 0.25; width: 0.8" rotation="90 0 0" position="-0.09483 -0.30 -0.01184"></a-image>
+                    </a-entity>
+    
+                    <!-- DEUXIEME LIGNE DE BRIQUE -->
+                    <a-entity id="Brick1TwoLine" gltf-model="#brick-large-abyss" position="-1.99827 0.94 -0.002" rotation="-90 0 0">
+                        <a-image src="#Brick1TwoLine" material="" geometry="height: 0.25; width: 0.8" rotation="90 0 0" position="0.08709 -0.30 -0.00923"></a-image>
+                    </a-entity>
+                    <a-entity id="Brick2TwoLine" gltf-model="#brick-large-night-blue" position="-1.00813 0.94 -0.002" rotation="-90 0 0">
+                        <a-image src="#Brick2TwoLine" material="" geometry="height: 0.25" rotation="90 0 0" position="0.00235 -0.30 -0.00849"></a-image>
+                    </a-entity>
+                    <a-entity id="Brick3TwoLine" gltf-model="#brick-large-solarized-dark" position="-0.01229 0.94 -0.002" rotation="-90 0 0">
+                        <a-image src="#Brick3TwoLine" material="" geometry="height: 0.25; width: 0.98" position="0.0014 -0.30 -0.00137" rotation="90 0 0"></a-image>
+                    </a-entity>
+                    <a-entity id="Brick4TwoLine" gltf-model="#brick-large-red" position="0.98788 0.94 -0.002" rotation="-90 0 0">
+                        <a-image src="#Brick4TwoLine" material="" geometry="height: 0.2; width: 0.98" rotation="90 0 0" position="-0.00041 -0.30 -0.02805"></a-image>
+                    </a-entity>
+                    <a-entity id="Brick5TwoLine" gltf-model="#brick-large-kimbie-dark" position="1.98275 0.94 -0.002" rotation="-90 0 0">
+                        <a-image src="#Brick5TwoLine" material="" geometry="height: 0.2; width: 0.8" rotation="90 0 0" position="-0.08793 -0.30 -0.01826"></a-image>
+                    </a-entity>
+    
+                    <!-- PREMIERE LIGNE DE BRIQUE -->
+                    <a-entity id="Brick1OneLine" gltf-model="#brick-large-dark" position="-1.99706 1.205 -0.002" rotation="-90 0 0">
+                        <a-image src="#Brick1OneLine" material="" geometry="height: 0.25; width: 0.8" rotation="90 0 0" position="0.08282 -0.30 -0.00734"></a-image>
+                    </a-entity>
+                    <a-entity id="Brick2OneLine" gltf-model="#brick-large-red" position="-1.0122 1.205 -0.002" rotation="-90 0 0">
+                        <a-image src="#Brick2OneLine" material="" geometry="height: 0.2; width: 0.98" rotation="90 0 0" position="0.00353 -0.30 -0.00911"></a-image>
+                    </a-entity>
+                    <a-entity id="Brick3OneLine" gltf-model="#brick-large-kimbie-dark" position="-0.01456 1.205 -0.002" rotation="-90 0 0">
+                        <a-image src="#Brick3OneLine" material="" geometry="height: 0.2; width: 0.98" rotation="90 0 0" position="-0.00728 -0.30 -0.01027"></a-image>
+                    </a-entity>
+                    <a-entity id="Brick4OneLine" gltf-model="#brick-large-solarized-dark" position="0.98213 1.205 -0.002" rotation="-90 0 0">
+                        <a-image src="#Brick4OneLine" material="" geometry="height: 0.2" rotation="90 0 0" position="-0.00007 -0.30 0.00301"></a-image>
+                    </a-entity>
+                    <a-entity id="Brick5OneLine" gltf-model="#brick-large-night-blue" position="1.98272 1.205 -0.002" rotation="-90 0 0">
+                        <a-image src="#Brick5OneLine" material="" geometry="height: 0.2; width: 0.8" rotation="90 0 0" position="-0.08855 -0.30 -0.01028"></a-image>
+                    </a-entity>
+                </a-entity>
+            </a-entity>
+        </a-entity>
+    </a-scene> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"
+        integrity="sha512-aNMyYYxdIxIaot0Y1/PLuEu3eipGCmsEUBrUq+7aVyPGMFH8z0eTP0tkqAvv34fzN6z+201d3T8HPb1svWSKHQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        var tl = anime.timeline({
+            easing: 'easeOutExpo',
+            duration: 2000,
+        });
+
+        tl
+            .add({
+                targets: '#Brick1OneLine',
+                keyframes: [
+                    { position: '-2.00366 0.13 0' },
+                    { position: '-1.99907 0.40381 -0.00172' },
+                    { position: '-1.99975 0.67107 -0.002' },
+                    { position: '-1.99827 0.93968 -0.002' },
+                    { position: '-1.99706 1.20456 -0.002' },
+                ],
+            }, 400)
+            .add({
+                targets: '#Brick2OneLine',
+                keyframes: [
+                    { position: '-1.00126 0.13 0' },
+                    { position: '-1.00321 0.404 -0.002' },
+                    { position: '-1.00454 0.671 -0.002' },
+                    { position: '-1.00813 0.94 -0.002' },
+                    { position: '-1.0122 1.205 -0.002' },
+                ],
+            }, 400)
+
+            .add({
+                targets: '#Brick3OneLine',
+                keyframes: [
+                    { position: '-0.00135 0.13 0' },
+                    { position: '-0.00426 0.404 -0.002' },
+                    { position: '-0.00711 0.671 -0.002' },
+                    { position: '-0.01229 0.94 -0.002' },
+                    { position: '-0.01456 1.205 -0.002' },
+                ],
+            }, 400)
+
+            .add({
+                targets: '#Brick4OneLine',
+                keyframes: [
+                    { position: '0.99885 0.13 0' },
+                    { position: '0.99652 0.404 -0.002' },
+                    { position: '0.99258 0.671 -0.002' },
+                    { position: '0.98788 0.94 -0.002' },
+                    { position: '0.98213 1.205 -0.002' },
+                ]
+            }, 400)
+
+            .add({
+                targets: '#Brick5OneLine',
+                keyframes: [
+                    { position: '1.99584 0.13 0' },
+                    { position: '1.99268 0.404 -0.002' },
+                    { position: '1.9879 0.671 -0.002' },
+                    { position: '1.98275 0.94 -0.002' },
+                    { position: '1.98272 1.205 -0.002' },
+                ]
+            }, 400)
+
+            .add({
+                targets: '#Brick1TwoLine',
+                position: ['-1.99827 -6 0', '-1.99827 0.93968 -0.002']
+            })
+
+            .add({
+                targets: '#Brick2TwoLine',
+                position: ['-1.00813 -6 -0.002', '-1.00813 0.94 -0.002']
+            }, 2500)
+
+            .add({
+                targets: '#Brick3TwoLine',
+                position: ['-0.01229 -6 -0.002', '-0.01229 0.94 -0.002']
+            }, 2800)
+
+            .add({
+                targets: '#Brick4TwoLine',
+                position: ['0.98788 -6 -0.002', '0.98788 0.94 -0.002']
+            }, 3100)
+
+            .add({
+                targets: '#Brick5TwoLine',
+                position: ['1.98275 -6 -0.002', '1.98275 0.94 -0.002']
+            }, 3400)
+
+            .add({
+                targets: '#Brick1ThreeLine',
+                position: ['-1.99975 -6 -0.002', '-1.99975 0.67107 -0.002']
+            }, 3700)
+
+            .add({
+                targets: '#Brick2ThreeLine',
+                position: ['-1.00454 -6 -0.002', '-1.00454 0.671 -0.002']
+            }, 4000)
+
+            .add({
+                targets: '#Brick3ThreeLine',
+                position: ['-0.00711 -6 -0.002', '-0.00711 0.671 -0.002']
+            }, 4300)
+
+            .add({
+                targets: '#Brick4ThreeLine',
+                position: ['0.99258 -6 -0.002', '0.99258 0.671 -0.002']
+            }, 4600)
+
+            .add({
+                targets: '#Brick5ThreeLine',
+                position: ['1.9879 -6 -0.002', '1.9879 0.671 -0.002']
+            }, 4900)
+
+            .add({
+                targets: '#Brick1FourLine',
+                position: ['-1.99907 -6 -0.00172', '-1.99907 0.40381 -0.00172']
+            }, 5200)
+
+            .add({
+                targets: '#Brick2FourLine',
+                position: ['-1.00321 -6 -0.002', '-1.00321 0.404 -0.002']
+            }, 5500)
+
+            .add({
+                targets: '#Brick3FourLine',
+                position: ['-0.00426 -6 -0.002', '-0.00426 0.404 -0.002']
+            }, 5800)
+
+            .add({
+                targets: '#Brick4FourLine',
+                position: ['0.99652 -6 -0.002', '0.99652 0.404 -0.002']
+            }, 6200)
+
+            .add({
+                targets: '#Brick5FourLine',
+                position: ['1.99268 -6 -0.002', '1.99268 0.404 -0.002']
+            }, 6500)
+
+            .add({
+                targets: '#Brick1LastLine',
+                position: ['-2.00366 -6 0', '-2.00366 0.13 0']
+            }, 6800)
+
+            .add({
+                targets: '#Brick2LastLine',
+                position: ['-1.00126 -6 0', '-1.00126 0.13 0']
+            }, 7200)
+
+            .add({
+                targets: '#Brick3LastLine',
+                position: ['-0.00135 -6 0', '-0.00135 0.13 0']
+            }, 7500)
+
+            .add({
+                targets: '#Brick4LastLine',
+                position: ['0.99885 -6 0', '0.99885 0.13 0']
+            }, 7800)
+
+            .add({
+                targets: '#Brick5LastLine',
+                position: ['1.99584 -6 0', '1.99584 0.13 0']
+            }, 8100)
+        </script>
+    </body>
+</html>
