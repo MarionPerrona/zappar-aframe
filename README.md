@@ -1,8 +1,8 @@
 # R6.Crea.02 Création numérique interactive
 
 ## Ma carte de visite
-![alt text](/assets/face-carte-visite.jpg)
-![alt text](/assets/dos-carte-visite.jpg)
+![Face carte de visite](/assets/face-carte-visite.png)
+![Dos carte de visite](/assets/dos-carte-visite.png)
 
 ## QR code lien expérience AR
 
