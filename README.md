@@ -6,7 +6,7 @@ J'ai créé ma carte de visite en m'appuyant sur une de mes compétences que je 
 ## Ma carte de visite
 ![Face carte de visite](/assets/face-carte-visite.png)
 
-
+## --------------------------------------------------------------------------------------------------------
 
 ![Dos carte de visite](/assets/dos-carte-visite.png)
 
